@@ -252,7 +252,7 @@ unsigned char charset[][5] PROGMEM =
 	{ 0x7F, 0x20, 0x10, 0x20, 0x7F }, // W
 	{ 0x63, 0x14, 0x08, 0x14, 0x63 }, // X
 	{ 0x03, 0x04, 0x78, 0x04, 0x03 }, // Y
-	{ 0x61, 0x51, 0x49, 0x45, 0x43 }  // Z
+	{ 0x61, 0x51, 0x49, 0x45, 0x43 } // Z
 	
 };
 unsigned char str_hallo[] PROGMEM = "HALLO";
@@ -334,7 +334,7 @@ void render_hallo(){
 
 void render_text(unsigned char* text, uint8_t length){
 	uint8_t pos;
-	frame_delay = 250;
+	frame_delay = 255;
 	pos = frame % length;
 
 	if (pos == (length - 1) ) {
@@ -343,6 +343,18 @@ void render_text(unsigned char* text, uint8_t length){
 	}
 
 	render_character(pgm_read_byte(&(text[pos]))-50);
+}
+
+void render_text_blink(unsigned char* text, uint8_t length){
+	uint8_t pos;
+	frame_delay = 100;
+	pos = frame % (length  * 2);
+
+	if (frame % 2 == 1 || (pos/2 == (length - 1) )) {
+		clear_bitmap();
+	} else { 
+		render_character(pgm_read_byte(&(text[pos / 2]))-50);
+	}
 }
 
 void render_shades(){
@@ -458,7 +470,7 @@ void render_buffer()
 		case 18: render_character(14);	break;
 		case 19: render_text(str_habo, sizeof(str_habo));	break;
 		case 20: render_text(str_dingfabrik, sizeof(str_dingfabrik));	break;
-		case 21: render_text(str_hallo, sizeof(str_hallo));	break;
+		case 21: render_text_blink(str_hallo, sizeof(str_hallo));	break;
 	}
 }
 
