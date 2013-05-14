@@ -442,7 +442,7 @@ void render_fire()
 
 
 // renders the correct image / animation onto the bitmap
-#define MODES 23
+#define MODES 21
 void render_buffer()
 {
 	frame++;
