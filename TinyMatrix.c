@@ -456,11 +456,9 @@ void render_buffer()
 		case 16: render_character(12);	break;
 		case 17: render_character(13);	break;
 		case 18: render_character(14);	break;
-		case 19: render_bump();       	break;
-		case 20: render_shades();    	break;
-		case 21: render_text(str_habo, sizeof(str_habo));	break;
-		case 22: render_text(str_dingfabrik, sizeof(str_dingfabrik));	break;
-		case 23: render_text(str_hallo, sizeof(str_hallo));	break;
+		case 19: render_text(str_habo, sizeof(str_habo));	break;
+		case 20: render_text(str_dingfabrik, sizeof(str_dingfabrik));	break;
+		case 21: render_text(str_hallo, sizeof(str_hallo));	break;
 	}
 }
 
